@@ -1,4 +1,6 @@
 RailsChapter3::Application.routes.draw do
+  get "users/new"
+
   # old pagescontroller routes as we're using custom routes
   # get "pages/home"
   # 
@@ -11,6 +13,7 @@ RailsChapter3::Application.routes.draw do
   match '/contact', :to=>'pages#contact'
   match '/about', :to=>'pages#about'
   match '/help', :to=>'pages#help'
+  match '/signup', :to=>'users#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
