@@ -1,5 +1,7 @@
 RailsChapter3::Application.routes.draw do
-  get "users/new"
+  resources :users
+
+  #get "users/new"
 
   # old pagescontroller routes as we're using custom routes
   # get "pages/home"
