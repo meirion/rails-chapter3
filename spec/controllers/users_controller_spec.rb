@@ -45,6 +45,79 @@ describe UsersController do
       get 'new'
       response.should have_selector("title", :content=>"Sign up")
     end
+    
+    it "should have a name field" do
+      get :new # nicer 'railsy' way of getting the page
+      response.should have_selector("input[name='user[name]'][type='text']")
+    end
+    
+    it "should have a email field" do
+      get :new # nicer 'railsy' way of getting the page
+      response.should have_selector("input[name='user[email]'][type='text']")
+    end
+    
+    it "should have a password field" do
+      get :new # nicer 'railsy' way of getting the page
+      response.should have_selector("input[name='user[password]'][type='password']")
+    end
+    
+    it "should have a password_confirmation field" do
+      get :new # nicer 'railsy' way of getting the page
+      response.should have_selector("input[name='user[password_confirmation]'][type='password']")
+    end
+  end
+
+  describe "POST 'create'" do
+    
+    describe "success" do
+      
+      # set up some legal user params
+      before(:each) do
+        @attr = { :name=>"New User", :email=>"user@example.com",
+                  :password=>"foobarfoo",:password_confirmation=>"foobarfoo",}
+      end
+      
+      it "should create a new user" do
+        lambda do
+          post :create, :user => @attr
+        end.should change(User, :count).by(1)
+      end
+      
+      it "should redirect the user to the show user page" do
+        post :create, :user => @attr
+        response.should redirect_to(user_path(assigns(:user)))        
+      end
+      
+      it "should flash a welcome message" do
+        post :create, :user => @attr
+        flash[:success].should =~ /welcome to the sample app/i
+      end
+    end
+    
+    describe "failure" do
+      
+      before(:each) do
+        @attr = { :name => "", :email => "", :password => "", 
+                  :password_confirmation => "" }
+      end
+      
+      it "should not create a user" do
+        lambda do
+          post :create, :user => @attr
+        end.should_not change(User, :count)
+      end
+      
+      it "should have the right title (ie redirect back to sign up)" do
+        post :create, :user => @attr
+        response.should have_selector("title", :content => "Sign up")
+      end
+      
+      it "should render the 'new' page" do
+        post :create, :user => @attr
+        response.should render_template('new')
+      end
+      
+    end
   end
 
 end

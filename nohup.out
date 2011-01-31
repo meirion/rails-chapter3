@@ -1,0 +1,10 @@
+/home/meirion/.rvm/gems/ruby-1.9.2-p136/gems/rack-1.2.1/lib/rack/handler.rb:21:in `const_get': wrong constant name $ (NameError)
+	from /home/meirion/.rvm/gems/ruby-1.9.2-p136/gems/rack-1.2.1/lib/rack/handler.rb:21:in `get'
+	from /home/meirion/.rvm/gems/ruby-1.9.2-p136/gems/rack-1.2.1/lib/rack/server.rb:217:in `server'
+	from /home/meirion/.rvm/gems/ruby-1.9.2-p136/gems/railties-3.0.3/lib/rails/commands/server.rb:54:in `start'
+	from /home/meirion/.rvm/gems/ruby-1.9.2-p136/gems/railties-3.0.3/lib/rails/commands.rb:30:in `block in <top (required)>'
+	from /home/meirion/.rvm/gems/ruby-1.9.2-p136/gems/railties-3.0.3/lib/rails/commands.rb:27:in `tap'
+	from /home/meirion/.rvm/gems/ruby-1.9.2-p136/gems/railties-3.0.3/lib/rails/commands.rb:27:in `<top (required)>'
+	from script/rails:6:in `require'
+	from script/rails:6:in `<main>'
+Exiting
